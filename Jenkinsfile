@@ -21,7 +21,7 @@ pipeline {
         }
 	         
         stage('Deploy') {
-		
+		agent {docker{ image 'maven:latest'}}	
             steps {
                 sh ("docker build .")
 		    
