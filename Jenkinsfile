@@ -9,7 +9,7 @@ pipeline {
 	stage('Build') {		                                                                             
             steps {
 			 script{
-                   sh ("mvn -version")
+                   sh ("mvn clean install")
                }
 		    echo " ${WORKSPACE}"
 		    
