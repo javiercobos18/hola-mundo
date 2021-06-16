@@ -1,7 +1,5 @@
 pipeline {
-               agent {docker
-							{ image 'maven:latest'}
-							}
+               agent any
                                                                                              
                               environment {
                               APP_NAME = sh (returnStdout: true, script: 'grep -im1 "<artifactId>" pom.xml | awk -F\'[><]\' \'{print $3}\' | tr -d "\n"')
