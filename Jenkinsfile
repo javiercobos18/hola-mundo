@@ -1,5 +1,7 @@
 pipeline {
-               agent any
+               agent {docker
+							{ image 'maven:latest'}
+							}
                                                                                              
                               environment {
                               APP_NAME = sh (returnStdout: true, script: 'grep -im1 "<artifactId>" pom.xml | awk -F\'[><]\' \'{print $3}\' | tr -d "\n"')
@@ -11,7 +13,7 @@ pipeline {
         
         stage('Build') {
             steps {
-                sh ('mvn clean install')
+               // sh ('mvn clean install')
 		    // echo "sonnar engine is ${scannerHome}"
 		    echo " ${WORKSPACE}"
 		    
@@ -21,11 +23,8 @@ pipeline {
         }
 	         
         stage('Deploy') {
-		agent {docker{ image 'maven:latest'}}	
             steps {
-              //  sh ("docker build .")
-		    
-		    echo 'Deploying....'
+                echo 'Deploying....'
             }
         }
     }
