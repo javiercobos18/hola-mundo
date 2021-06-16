@@ -13,7 +13,7 @@ pipeline {
         
         stage('Build') {
             steps {
-               // sh ('mvn clean install')
+                sh ('mvn clean install')
 		    // echo "sonnar engine is ${scannerHome}"
 		    echo " ${WORKSPACE}"
 		    
