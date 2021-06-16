@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy') {
 		agent {docker{ image 'maven:latest'}}	
             steps {
-                sh ("docker build .")
+              //  sh ("docker build .")
 		    
 		    echo 'Deploying....'
             }
