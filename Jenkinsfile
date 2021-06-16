@@ -1,27 +1,10 @@
 pipeline {
-               agent any
-                                                                                                                         
+    agent any
+
     stages {
-        
-        stage('Build') {
-		environment {
-                              APP_NAME = sh (returnStdout: true, script: 'grep -im1 "<artifactId>" pom.xml | awk -F\'[><]\' \'{print $3}\' | tr -d "\n"')
-                              APP_VERSION = sh (returnStdout: true, script: 'grep -im1 "<version>" pom.xml | awk -F\'[><]\' \'{print $3}\' | tr -d "\n"')
-                              WORKSPACE = "${WORKSPACE}"              
-                              }
+        stage('Hello') {
             steps {
-                sh ('mvn clean install')
-		    // echo "sonnar engine is ${scannerHome}"
-		    echo " ${WORKSPACE}"
-		    
-                                                           echo 'Build..'
-		    
-            }
-        }
-	         
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh ('pwd')
             }
         }
     }
