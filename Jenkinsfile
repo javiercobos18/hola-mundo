@@ -7,8 +7,7 @@ pipeline {
                               }
     stages {     
         stage('Build') {
-         agent { docker 'maven:3.8.1-adoptopenjdk-11' }		                                                                             
-                    agent {docker{ image 'maven:latest'}}
+         agent { docker 'image 'maven:latest'' }		                                                                             
             steps {
                 sh ('mvn clean install')
 		    // echo "sonnar engine is ${scannerHome}"
